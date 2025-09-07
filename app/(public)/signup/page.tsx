@@ -22,8 +22,10 @@ export default function Login() {
         // Signed up
         const user = userCredential.user;
         const idToken = await user.getIdToken();
+        const refreshToken = user.refreshToken;
         await signInWithNextAuth("credentials", {
           idToken,
+          refreshToken,
           callbackUrl: "/",
         });
         toast.success("アカウントを作成しました");
